@@ -161,10 +161,10 @@ export function AboutSection() {
               </div>
               <div className="border-l-2 border-cyan-500/40 pl-4 space-y-3 text-slate-400 leading-relaxed">
                 <p>
-                  Started in{" "}
+                  Graduate in{" "}
                   <span className="text-cyan-300">Informatics Engineering</span>
-                  , gradually specializing in data analytics. Early experience
-                  with family business — customer service & stock management.
+                  , start specializing in data analytics. Early experience with
+                  family business — customer service & stock management.
                 </p>
                 <p>
                   Dedicated to building{" "}

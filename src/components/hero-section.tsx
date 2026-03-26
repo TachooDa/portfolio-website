@@ -105,14 +105,18 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 // ─── Skill tag pill ────────────────────────────────────────────────────────────
 const skills = [
   { label: "SQL", color: "cyan" },
-  { label: "Python", color: "green" },
-  { label: "Power BI", color: "yellow" },
-  { label: "Excel", color: "green" },
   { label: "Tableau", color: "cyan" },
-  // { label: "DAX", color: "yellow" },
   { label: "PostgreSQL", color: "cyan" },
-  { label: "Pandas", color: "green" },
-  { label: "Microsoft Excel", color: "yellow" },
+  { label: "Looker Studio", color: "cyan" },
+  { label: "Python", color: "green" },
+  { label: "Microsoft Excel", color: "green" },
+  { label: "Data Modelling", color: "green" },
+  { label: "Power BI", color: "yellow" },
+  { label: "Customer Analytics", color: "yellow" },
+  { label: "Descriptive Analysis", color: "yellow" },
+  // { label: "Excel", color: "green" },
+  // { label: "DAX", color: "yellow" },
+  // { label: "Pandas", color: "green" },
 ];
 
 const colorMap: Record<string, string> = {
@@ -125,7 +129,13 @@ const colorMap: Record<string, string> = {
 
 // ─── Main HeroSection ──────────────────────────────────────────────────────────
 export function HeroSection() {
-  const roles = ["Data Analyst", "SQL Enthusiast", "BI Engineer", "Python Analyst"];
+  const roles = [
+    "Data Analyst",
+    "SQL Enthusiast",
+    "Database Management",
+    "BI Engineer",
+    "Python For Analyst",
+  ];
   const typed = useTypewriter(roles);
   const [booted, setBooted] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);

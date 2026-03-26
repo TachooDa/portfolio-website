@@ -6,6 +6,7 @@ import {
   SkillsSection,
   ContactSection,
   Footer,
+  ScrollToTop,
 } from "@/components";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <SkillsSection />
       <ContactSection />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

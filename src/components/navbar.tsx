@@ -106,7 +106,7 @@ export function Navbar() {
               {/* Photo frame */}
               <div className="absolute inset-1 rounded-full border border-cyan-500/30 overflow-hidden bg-slate-900">
                 <img
-                  src="/profile.png"
+                  src="/formal.png"
                   alt="Faraj Hafidh"
                   className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-200"
                 />

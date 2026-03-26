@@ -20,11 +20,11 @@ const skillCategories = [
     icon: "VIZ",
     color: "yellow",
     skills: [
-      { name: "Power BI", level: 88 },
-      { name: "Tableau", level: 78 },
-      { name: "Looker", level: 70 },
-      { name: "Plotly", level: 75 },
-      { name: "Matplotlib", level: 80 },
+      { name: "Power BI", level: 90 },
+      { name: "Tableau", level: 80 },
+      { name: "Looker", level: 75 },
+      { name: "Seaborn", level: 75 },
+      { name: "Matplotlib", level: 75 },
     ],
   },
   {
@@ -43,9 +43,9 @@ const skillCategories = [
     icon: "DB",
     color: "yellow",
     skills: [
-      { name: "PostgreSQL", level: 85 },
-      { name: "BigQuery", level: 72 },
-      { name: "MySQL", level: 80 },
+      { name: "PostgreSQL", level: 90 },
+      { name: "BigQuery", level: 75 },
+      { name: "MySQL", level: 90 },
     ],
   },
 ];

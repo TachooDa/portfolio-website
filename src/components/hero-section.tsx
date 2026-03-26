@@ -111,8 +111,9 @@ const skills = [
   { label: "Python", color: "green" },
   { label: "Microsoft Excel", color: "green" },
   { label: "Data Modelling", color: "green" },
+  { label: "Exploratory Data Analysis", color: "green" },
   { label: "Power BI", color: "yellow" },
-  { label: "Customer Analytics", color: "yellow" },
+  // { label: "Customer Analytics", color: "yellow" },
   { label: "Descriptive Analysis", color: "yellow" },
   // { label: "Excel", color: "green" },
   // { label: "DAX", color: "yellow" },
@@ -252,8 +253,12 @@ export function HeroSection() {
               >
                 Transforming raw data into{" "}
                 <span className="text-cyan-300">actionable insights</span> using
-                SQL, Python, and modern BI tools. Turning numbers into
+                SQL, Excel, Python, and modern BI tools. Turning numbers into
                 decisions.
+                <br />
+                <span className="text-cyan-300">Help Me.</span>
+                to get my first internship or fulltime as a data analyst and
+                start my career in data analytics.
               </motion.p>
 
               {/* Stats row */}
@@ -263,11 +268,12 @@ export function HeroSection() {
               >
                 {[
                   { label: "datasets_analyzed", val: 10, suffix: "+" },
-                  { label: "yrs_experience", val: 1, suffix: "" },
+                  { label: "yrs_experience", val: 1, suffix: "", prefix: "" },
                   { label: "projects_shipped", val: 10, suffix: "+" },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
                     <div className="text-2xl font-bold text-cyan-400">
+                      {s.prefix}
                       <Counter to={s.val} suffix={s.suffix} />
                     </div>
                     <div className="text-[10px] text-slate-500 mt-0.5 tracking-wider">
@@ -391,7 +397,7 @@ export function HeroSection() {
                   {/* Photo frame */}
                   <div className="absolute inset-2 rounded-full border border-cyan-500/60 overflow-hidden bg-slate-900">
                     <img
-                      src="/profile.png"
+                      src="/formal.png"
                       alt="Faraj Hafidh"
                       className="w-full h-full object-cover object-top opacity-90"
                     />
@@ -469,6 +475,13 @@ export function HeroSection() {
                       <span className="text-cyan-400">"location"</span>
                       <span className="text-slate-500">: </span>
                       <span className="text-green-300">"Indonesia"</span>
+                    </div>
+                    <div>
+                      <span className="text-cyan-400">"Industry Interest"</span>
+                      <span className="text-slate-500">: </span>
+                      <span className="text-green-300">
+                        "E-commerce, Fintech, Edtech"
+                      </span>
                     </div>
                   </div>
                   <div className="flex gap-2 pt-1">

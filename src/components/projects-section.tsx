@@ -35,7 +35,7 @@ const projects = [
   },
   {
     id: 4,
-    title: "Patient Visit Analysis",
+    title: "Patient Visit Analysis (Analyst Builder Project)",
     description:
       "Explores patient visits, diagnosis trends, and visit utilization using a healthcare dataset to identify patterns in diagnoses and healthcare usage.",
     tags: ["MySQL", "Power BI", "Excel"],

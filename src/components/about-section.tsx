@@ -116,18 +116,8 @@ export function AboutSection() {
 
         {/* Stats grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-          <CountUpStat
-            value={10}
-            label="Datasets Analyzed"
-            suffix="+"
-            index={0}
-          />
-          <CountUpStat
-            value={10}
-            label="Dashboard Views"
-            suffix="+"
-            index={1}
-          />
+          <CountUpStat value={5} label="Main Projects" suffix="+" index={0} />
+          <CountUpStat value={5} label="Dashboard Views" suffix="+" index={1} />
           <CountUpStat
             value={10}
             label="Projects Shipped"

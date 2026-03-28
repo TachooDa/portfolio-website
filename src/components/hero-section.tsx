@@ -267,7 +267,7 @@ export function HeroSection() {
                 className="grid grid-cols-3 gap-4 mb-8 p-4 border border-slate-800 rounded bg-slate-900/50"
               >
                 {[
-                  { label: "datasets_analyzed", val: 10, suffix: "+" },
+                  { label: "Main_Projects", val: 5, suffix: "+" },
                   { label: "yrs_experience", val: 1, suffix: "", prefix: "" },
                   { label: "projects_shipped", val: 10, suffix: "+" },
                 ].map((s) => (

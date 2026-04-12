@@ -1,25 +1,10 @@
-import {
-  Navbar,
-  HeroSection,
-  AboutSection,
-  ProjectsSection,
-  SkillsSection,
-  ContactSection,
-  Footer,
-  ScrollToTop,
-} from "@/components";
+import { Navbar, MainContent } from "@/components";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 pt-14 md:pt-0 md:pl-[200px]">
+    <div className="min-h-screen bg-slate-950 text-slate-50 pt-14 md:pt-0 md:pl-[260px]">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <ContactSection />
-      <Footer />
-      <ScrollToTop />
+      <MainContent />
     </div>
   );
 }

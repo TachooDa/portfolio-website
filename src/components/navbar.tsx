@@ -1,13 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigation } from "@/context/navigation-context";
 
 const navItems = [
   {
+    label: "home",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M2.25 12l8.954-8.954c.78-.78 2.05-.78 2.828 0l8.956 8.954m-17.414 0a2.25 2.25 0 00-1.414 2.06v12.002a1.5 1.5 0 001.97 1.414l2.423-1.102c.712-.323 1.518-.323 2.23 0l2.423 1.102c.712.324 1.518.323 2.23 0l2.423-1.102c.712-.323 1.518-.323 2.23 0l2.423 1.102c1.07.487 2.202-.652 1.97-1.414V4.25a2.25 2.25 0 00-1.5-2.06V3a.75.75 0 00-.75-.75H15a.75.75 0 00-.75.75v1.5H9V3.75A.75.75 0 008.25 3H4.5a.75.75 0 00-.75.75v.309z"
+      />
+    ),
+  },
+  {
     label: "about",
-    href: "#about",
     icon: (
       <path
         strokeLinecap="round"
@@ -19,7 +30,6 @@ const navItems = [
   },
   {
     label: "projects",
-    href: "#projects",
     icon: (
       <path
         strokeLinecap="round"
@@ -31,7 +41,6 @@ const navItems = [
   },
   {
     label: "skills",
-    href: "#skills",
     icon: (
       <path
         strokeLinecap="round"
@@ -41,21 +50,8 @@ const navItems = [
       />
     ),
   },
-  // {
-  //   label: "experience",
-  //   href: "#experience",
-  //   icon: (
-  //     <path
-  //       strokeLinecap="round"
-  //       strokeLinejoin="round"
-  //       strokeWidth={1.5}
-  //       d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0"
-  //     />
-  //   ),
-  // },
   {
     label: "contact",
-    href: "#contact",
     icon: (
       <path
         strokeLinecap="round"
@@ -68,94 +64,74 @@ const navItems = [
 ];
 
 export function Navbar() {
-  const [activeItem, setActiveItem] = useState("");
+  const { activeView, setActiveView } = useNavigation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", () => {
-    const sections = navItems.map((n) => n.href.replace("#", ""));
-    for (const id of [...sections].reverse()) {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 120) {
-        setActiveItem(id);
-        break;
-      }
-    }
-  });
 
   return (
     <>
-      {/* ── Desktop sidebar (200px) ── */}
+      {/* ── Desktop Sidebar ── */}
       <motion.aside
-        initial={{ x: -220, opacity: 0 }}
+        initial={{ x: -260, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex fixed left-0 top-0 h-screen w-[200px] z-50 flex-col py-6 bg-slate-950/90 backdrop-blur-xl border-r border-slate-800/60 font-mono"
+        className="hidden md:flex fixed left-0 top-0 h-screen w-[260px] z-50 flex-col py-8 bg-slate-950/95 backdrop-blur-xl border-r border-slate-800/60"
       >
-        {/* ── Profile section ── */}
-        <div className="flex flex-col items-center gap-3 px-4 pb-6 border-b border-slate-800/60">
-          {/* Photo */}
-          <Link href="/" className="relative group">
-            <div className="relative w-16 h-16">
+        {/* ── Profile Section ── */}
+        <div className="flex flex-col items-center gap-4 px-4 pb-8 border-b border-slate-800/60">
+          {/* Photo with rotating border - Click to go home */}
+          <button
+            onClick={() => setActiveView("home")}
+            className="relative group"
+          >
+            <div className="relative w-20 h-20">
               {/* Rotating dashed ring */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-dashed border-cyan-500/40"
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="absolute inset-0 rounded-full border-2 border-dashed border-blue-500/40 group-hover:border-blue-500/60 transition-colors"
               />
               {/* Photo frame */}
-              <div className="absolute inset-1 rounded-full border border-cyan-500/30 overflow-hidden bg-slate-900">
+              <div className="absolute inset-1 rounded-full border border-blue-500/40 overflow-hidden bg-slate-900 group-hover:border-blue-500/60 transition-colors">
                 <img
                   src="/formal.png"
                   alt="Faraj Hafidh"
-                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+                  className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 />
               </div>
               {/* Status dot */}
               <motion.div
                 animate={{ opacity: [1, 0.3, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-950 z-10"
+                className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-950 z-10"
               />
             </div>
-          </Link>
+          </button>
 
           {/* Name */}
           <div className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-0.5">
-              <span className="text-green-400 text-xs">~/</span>
-              <span className="text-slate-50 text-sm font-bold tracking-tight">
-                faraj-hafidh
-              </span>
-            </div>
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.8, repeat: Infinity }}
-              className="inline-block w-1.5 h-3 bg-cyan-400"
-            />
+            <h3 className="text-slate-50 text-sm font-bold tracking-tight">
+              Faraj Hafidh
+            </h3>
+            <p className="text-slate-500 text-xs mt-0.5">Data Analyst</p>
           </div>
         </div>
 
-        {/* ── Nav prompt ── */}
-        <div className="px-4 pt-5 pb-2">
-          <span className="text-[10px] text-slate-600">
-            <span className="text-green-400">$</span> ls ./navigation/
-          </span>
-        </div>
-
-        {/* ── Nav items ── */}
-        <nav className="flex flex-col gap-0.5 px-3 flex-1">
+        {/* ── Nav Items ── */}
+        <nav className="flex flex-col gap-1 px-3 py-6 flex-1">
           {navItems.map((item) => {
-            const isActive = activeItem === item.label;
+            const isActive = activeView === item.label;
             return (
-              <Link
+              <button
                 key={item.label}
-                href={item.href}
-                onClick={() => setActiveItem(item.label)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded transition-all duration-200 group border ${
+                onClick={() => setActiveView(item.label)}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 group border text-left w-full ${
                   isActive
-                    ? "text-cyan-400 bg-cyan-500/10 border-cyan-500/30"
-                    : "text-slate-500 hover:text-cyan-400 hover:bg-slate-800/50 border-transparent"
+                    ? "text-blue-400 bg-blue-500/10 border-blue-500/30"
+                    : "text-slate-500 hover:text-blue-400 hover:bg-slate-800/30 border-transparent"
                 }`}
               >
                 <svg
@@ -166,35 +142,28 @@ export function Navbar() {
                 >
                   {item.icon}
                 </svg>
-                <span className="text-xs">
-                  <span
-                    className={`transition-colors ${isActive ? "text-cyan-700" : "text-slate-700 group-hover:text-cyan-700"}`}
-                  >
-                    ./
-                  </span>
+                <span className="text-xs font-medium capitalize">
                   {item.label}
                 </span>
-                {/* Active indicator */}
                 {isActive && (
                   <motion.div
                     layoutId="activeIndicator"
-                    className="ml-auto w-1 h-1 rounded-full bg-cyan-400"
+                    className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"
                   />
                 )}
-              </Link>
+              </button>
             );
           })}
         </nav>
 
-        {/* ── Bottom ── */}
-        <div className="px-3 pt-4 border-t border-slate-800/60 flex flex-col gap-2">
-          {/* Hire me */}
-          <a
-            href="#contact"
-            className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded border border-cyan-500/40 text-cyan-400 text-xs hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-200"
+        {/* ── Bottom CTA ── */}
+        <div className="px-3 pt-6 border-t border-slate-800/60 space-y-3">
+          <button
+            onClick={() => setActiveView("contact")}
+            className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg border border-blue-500/40 bg-blue-500/10 text-blue-400 text-xs font-medium hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-200"
           >
             <svg
-              className="w-3.5 h-3.5"
+              className="w-4 h-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -202,45 +171,55 @@ export function Navbar() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
               />
             </svg>
-            [hire_me]
-          </a>
+            Hire Me
+          </button>
 
           {/* Status */}
-          <div className="flex items-center justify-center gap-2 py-1.5">
+          <div className="flex items-center justify-center gap-2 py-2">
             <motion.div
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
               className="w-1.5 h-1.5 rounded-full bg-green-400"
             />
-            <span className="text-[10px] text-green-400">
-              AVAILABLE_FOR_WORK
+            <span className="text-[10px] text-green-400 font-medium">
+              Available
             </span>
           </div>
         </div>
       </motion.aside>
 
-      {/* ── Mobile top bar ── */}
+      {/* ── Mobile Top Bar ── */}
       <motion.nav
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="md:hidden fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-5 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/60 font-mono"
+        className="md:hidden fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
       >
-        {/* Mobile logo with photo */}
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="relative w-8 h-8">
+        {/* Logo - Click to go home */}
+        <button
+          onClick={() => {
+            setActiveView("home");
+            setMobileOpen(false);
+          }}
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
+          <div className="relative w-10 h-10">
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border border-dashed border-cyan-500/40"
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute inset-0 rounded-full border-2 border-dashed border-blue-500/40"
             />
-            <div className="absolute inset-0.5 rounded-full border border-cyan-500/30 overflow-hidden bg-slate-900">
+            <div className="absolute inset-0.5 rounded-full border border-blue-500/40 overflow-hidden bg-slate-900">
               <img
-                src="/profile.png"
+                src="/formal.png"
                 alt="Faraj Hafidh"
                 className="w-full h-full object-cover object-top opacity-90"
               />
@@ -248,23 +227,13 @@ export function Navbar() {
             <motion.div
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-green-400 border border-slate-950 z-10"
+              className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-950 z-10"
             />
           </div>
-          <div className="flex items-center gap-1">
-            <span className="text-green-400 text-xs">~/</span>
-            <span className="text-slate-50 text-sm font-bold">
-              faraj-hafidh
-            </span>
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.8, repeat: Infinity }}
-              className="inline-block w-1.5 h-3.5 bg-cyan-400 ml-0.5"
-            />
-          </div>
-        </Link>
+          <span className="text-slate-50 font-bold text-sm">Faraj Hafidh</span>
+        </button>
 
-        {/* Hamburger */}
+        {/* Hamburger Menu */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="flex flex-col gap-1.5 p-2 group"
@@ -273,22 +242,22 @@ export function Navbar() {
           <motion.span
             animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="block w-5 h-px bg-slate-400 group-hover:bg-cyan-400 transition-colors origin-center"
+            className="block w-5 h-px bg-slate-400 group-hover:bg-blue-400 transition-colors origin-center"
           />
           <motion.span
             animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
             transition={{ duration: 0.2 }}
-            className="block w-5 h-px bg-slate-400 group-hover:bg-cyan-400 transition-colors"
+            className="block w-5 h-px bg-slate-400 group-hover:bg-blue-400 transition-colors"
           />
           <motion.span
             animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="block w-5 h-px bg-slate-400 group-hover:bg-cyan-400 transition-colors origin-center"
+            className="block w-5 h-px bg-slate-400 group-hover:bg-blue-400 transition-colors origin-center"
           />
         </button>
       </motion.nav>
 
-      {/* Mobile dropdown */}
+      {/* ── Mobile Dropdown ── */}
       <motion.div
         initial={false}
         animate={
@@ -297,67 +266,86 @@ export function Navbar() {
             : { opacity: 0, height: 0 }
         }
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60 font-mono"
+        className="md:hidden fixed top-16 left-0 right-0 z-40 overflow-hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
       >
-        <div className="px-5 py-4 flex flex-col gap-1">
-          <div className="text-xs text-slate-600 mb-2 pb-2 border-b border-slate-800">
-            <span className="text-green-400">$</span> ls ./navigation/
-          </div>
+        <div className="px-6 py-4 flex flex-col gap-2">
           {navItems.map((item, i) => (
-            <motion.div
+            <motion.button
               key={item.label}
+              onClick={() => {
+                setActiveView(item.label);
+                setMobileOpen(false);
+              }}
               initial={{ opacity: 0, x: -10 }}
               animate={
                 mobileOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }
               }
               transition={{ duration: 0.2, delay: i * 0.05 }}
+              className="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-500 hover:text-blue-400 rounded-lg hover:bg-slate-800/40 transition-all duration-200 group w-full text-left"
             >
-              <Link
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-500 hover:text-cyan-400 rounded hover:bg-slate-800/40 transition-all duration-200 group"
+              <svg
+                className="w-4 h-4 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="w-4 h-4 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  {item.icon}
-                </svg>
-                <span>
-                  <span className="text-slate-700 group-hover:text-cyan-700 text-xs">
-                    ./
-                  </span>
-                  {item.label}
-                </span>
-                <svg
-                  className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-cyan-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
+                {item.icon}
+              </svg>
+              <span className="capitalize font-medium">{item.label}</span>
+            </motion.button>
           ))}
-          <div className="pt-2 mt-1 border-t border-slate-800/60">
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center w-full py-2 px-4 text-sm text-cyan-400 border border-cyan-500/40 rounded hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-200"
-            >
-              [hire_me]
-            </a>
-          </div>
+          <button
+            onClick={() => {
+              setActiveView("contact");
+              setMobileOpen(false);
+            }}
+            className="mt-2 py-2.5 px-4 text-sm text-blue-400 border border-blue-500/40 rounded-lg hover:bg-blue-500/10 transition-all duration-200 w-full"
+          >
+            Hire Me
+          </button>
         </div>
       </motion.div>
     </>
   );
 }
+//         stroke="currentColor"
+//         viewBox="0 0 24 24"
+//       >
+//         {item.icon}
+//       </svg>
+//       <span>
+//         <span className="text-slate-700 group-hover:text-cyan-700 text-xs">
+//           ./
+//         </span>
+//         {item.label}
+//       </span>
+//       <svg
+//         className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-cyan-500"
+//         fill="none"
+//         stroke="currentColor"
+//         viewBox="0 0 24 24"
+//       >
+//         <path
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//           strokeWidth={2}
+//           d="M9 5l7 7-7 7"
+//         />
+//       </svg>
+//     </button>
+//   </motion.div>
+// ))}
+//         <div className="pt-2 mt-1 border-t border-slate-800/60">
+//           <a
+//             href="#contact"
+//             onClick={() => setMobileOpen(false)}
+//             className="flex items-center justify-center w-full py-2 px-4 text-sm text-cyan-400 border border-cyan-500/40 rounded hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-200"
+//           >
+//             [hire_me]
+//           </a>
+//         </div>
+//       </div>
+//     </motion.div>
+//   </>
+// );
+// }

@@ -7,8 +7,12 @@ export const metadata: Metadata = {
   title: "Faraj Hafidh - Data Analyst",
   description:
     "Portfolio of Faraj Hafidh, Data Analyst specializing in analytics solutions.",
+  icons: {
+    icon: "/profile.ico", // favicon utama
+    shortcut: "/profile.ico", // shortcut icon
+    apple: "/apple-touch-icon.png", // icon untuk iOS
+  },
 };
-
 export default function RootLayout({
   children,
 }: {

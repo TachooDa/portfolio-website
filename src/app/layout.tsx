@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { NavigationProvider } from "@/context/navigation-context";
 import { Navbar } from "@/components/navbar";
-import { MainContent } from "@/components/main-content";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,12 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-slate-950 antialiased text-slate-50">
+      <body className="bg-slate-950 antialiased text-slate-50 min-h-screen">
         <NavigationProvider>
           <Navbar />
-          <MainContent />
+          <div className="pt-16 xl:pt-0 xl:ml-[260px]">{children}</div>
         </NavigationProvider>
       </body>
     </html>
   );
 }
+//       </body>
+//     </html>
+//   );
+// }

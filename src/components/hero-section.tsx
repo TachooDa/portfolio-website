@@ -132,8 +132,9 @@ export function HeroSection() {
               <span className="text-slate-300 font-medium">
                 clear, actionable insights
               </span>{" "}
-              using SQL, Python, and modern BI tools. Passionate about solving
-              problems with data and driving meaningful business decisions.
+              using SQL, Excel, Python, and modern BI tools. Passionate about
+              solving problems with data and driving meaningful business
+              decisions.
             </motion.p>
 
             {/* CTA Buttons */}

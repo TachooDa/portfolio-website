@@ -22,7 +22,7 @@ export function MainContent() {
   const CurrentView = views[activeView as keyof typeof views] || HeroSection;
 
   return (
-    <main className="md:ml-[200px]">
+    <main>
       <AnimatePresence mode="wait">
         <motion.div
           key={activeView}

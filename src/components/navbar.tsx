@@ -74,7 +74,7 @@ export function Navbar() {
         initial={{ x: -260, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="hidden md:flex fixed left-0 top-0 h-screen w-[260px] z-50 flex-col py-8 bg-slate-950/95 backdrop-blur-xl border-r border-slate-800/60"
+        className="hidden xl:flex fixed left-0 top-0 h-screen w-[260px] z-50 flex-col py-8 bg-slate-950/95 backdrop-blur-xl border-r border-slate-800/60"
       >
         {/* ── Profile Section ── */}
         <div className="flex flex-col items-center gap-4 px-4 pb-8 border-b border-slate-800/60">
@@ -197,9 +197,9 @@ export function Navbar() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="md:hidden fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
+        className="xl:hidden fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
       >
-        {/* Logo - Click to go home */}
+        {/* ── Logo - Click to go home ── */}
         <button
           onClick={() => {
             setActiveView("home");
@@ -233,7 +233,7 @@ export function Navbar() {
           <span className="text-slate-50 font-bold text-sm">Faraj Hafidh</span>
         </button>
 
-        {/* Hamburger Menu */}
+        {/* ── Hamburger Menu ── */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="flex flex-col gap-1.5 p-2 group"
@@ -266,7 +266,7 @@ export function Navbar() {
             : { opacity: 0, height: 0 }
         }
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="md:hidden fixed top-16 left-0 right-0 z-40 overflow-hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
+        className="xl:hidden fixed top-16 left-0 right-0 z-40 overflow-hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800/60"
       >
         <div className="px-6 py-4 flex flex-col gap-2">
           {navItems.map((item, i) => (
@@ -308,44 +308,3 @@ export function Navbar() {
     </>
   );
 }
-//         stroke="currentColor"
-//         viewBox="0 0 24 24"
-//       >
-//         {item.icon}
-//       </svg>
-//       <span>
-//         <span className="text-slate-700 group-hover:text-cyan-700 text-xs">
-//           ./
-//         </span>
-//         {item.label}
-//       </span>
-//       <svg
-//         className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-cyan-500"
-//         fill="none"
-//         stroke="currentColor"
-//         viewBox="0 0 24 24"
-//       >
-//         <path
-//           strokeLinecap="round"
-//           strokeLinejoin="round"
-//           strokeWidth={2}
-//           d="M9 5l7 7-7 7"
-//         />
-//       </svg>
-//     </button>
-//   </motion.div>
-// ))}
-//         <div className="pt-2 mt-1 border-t border-slate-800/60">
-//           <a
-//             href="#contact"
-//             onClick={() => setMobileOpen(false)}
-//             className="flex items-center justify-center w-full py-2 px-4 text-sm text-cyan-400 border border-cyan-500/40 rounded hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-200"
-//           >
-//             [hire_me]
-//           </a>
-//         </div>
-//       </div>
-//     </motion.div>
-//   </>
-// );
-// }

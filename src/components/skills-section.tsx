@@ -154,10 +154,12 @@ export function SkillsSection() {
           ))}
         </div>
 
-        <p className="mt-6 text-sm text-slate-400 max-w-xl">
-          Icons represent tools and technologies used across projects. If you
-          prefer a different visualization (experience years, proficiency dots,
-          or category groups), tell me which and I can update.
+        {/* Improved explanatory copy */}
+        <p className="mt-6 text-sm text-slate-300 max-w-2xl leading-relaxed">
+          Tools I actually use day-to-day — not just listed for the sake of it.
+          Each one has been put to work across real projects, from wrangling
+          messy datasets to building dashboards that (hopefully) make sense at
+          first glance.
         </p>
 
         {/* simple summary (optional) */}

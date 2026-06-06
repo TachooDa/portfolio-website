@@ -2,65 +2,121 @@
 
 import { motion } from "framer-motion";
 
-const skillCategories = [
+const skills = [
   {
-    category: "Languages & Tools",
-    icon: "🐍",
-    skills: [
-      { name: "Python", level: 80 },
-      { name: "SQL", level: 90 },
-      { name: "Excel", level: 85 },
-    ],
+    name: "Excel",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <rect x="2" y="3" width="20" height="18" rx="2" fill="currentColor" />
+        <path
+          d="M7 7h10M7 12h10M7 17h10"
+          stroke="#0ea5e9"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
+    ),
   },
   {
-    category: "BI & Visualization",
-    icon: "📊",
-    skills: [
-      { name: "Power BI", level: 90 },
-      { name: "Tableau", level: 80 },
-      { name: "Looker", level: 75 },
-      { name: "Seaborn", level: 75 },
-      { name: "Matplotlib", level: 75 },
-    ],
+    name: "SQL",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <ellipse cx="12" cy="6" rx="7" ry="3" fill="currentColor" />
+        <path
+          d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"
+          stroke="#34d399"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
+    ),
   },
   {
-    category: "Libraries & Frameworks",
-    icon: "📦",
-    skills: [
-      { name: "Pandas", level: 75 },
-      { name: "NumPy", level: 75 },
-    ],
+    name: "Power BI",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <rect x="3" y="6" width="4" height="12" rx="1" fill="currentColor" />
+        <rect x="9" y="9" width="3" height="9" rx="1" fill="currentColor" />
+        <rect x="14" y="4" width="3" height="14" rx="1" fill="currentColor" />
+        <rect x="19" y="12" width="2" height="6" rx="1" fill="currentColor" />
+      </svg>
+    ),
   },
   {
-    category: "Cloud & Databases",
-    icon: "🗄️",
-    skills: [
-      { name: "PostgreSQL", level: 90 },
-      { name: "BigQuery", level: 75 },
-      { name: "MySQL", level: 90 },
-    ],
+    name: "Python",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <path d="M7 3h10v4H9v2H7V3zM17 21H7v-4h8v-2h2v6z" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    name: "Tableau",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <circle cx="6" cy="6" r="1.4" fill="currentColor" />
+        <circle cx="6" cy="10.5" r="1.4" fill="currentColor" />
+        <circle cx="6" cy="15" r="1.4" fill="currentColor" />
+        <rect
+          x="9"
+          y="5"
+          width="1.6"
+          height="10"
+          rx="0.4"
+          fill="currentColor"
+        />
+        <rect
+          x="12"
+          y="3"
+          width="1.6"
+          height="12"
+          rx="0.4"
+          fill="currentColor"
+        />
+        <rect
+          x="15"
+          y="7"
+          width="1.6"
+          height="8"
+          rx="0.4"
+          fill="currentColor"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Power Query",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-8 h-8" aria-hidden>
+        <path
+          d="M4 7h16M4 12h10M4 17h7"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
+    ),
   },
 ];
 
 export function SkillsSection() {
-  return (
-    <section
-      id="skills"
-      className="py-20 px-6 relative overflow-hidden bg-slate-950"
-    >
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-slate-900/50 rounded-full blur-3xl" />
-      </div>
+  // compute simple summary from the skills array to avoid undefined identifiers
+  const totalSkills = skills.length;
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section header */}
+  return (
+    <section id="skills" className="py-24 px-6 bg-slate-950">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-500/30 rounded-full" />
@@ -68,122 +124,63 @@ export function SkillsSection() {
               Skills
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-50 tracking-tight mb-4">
-            Skills & Technologies
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-50 tracking-tight mb-2">
+            Tooling & Expertise
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl leading-relaxed">
-            A comprehensive toolkit of programming languages, visualization
-            platforms, libraries, and databases that power my analytics
-            solutions.
+            Practical tools and platforms used to deliver analyses,
+            visualizations, and reports.
           </p>
         </motion.div>
 
-        {/* Skills grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((cat, catIdx) => (
-            <motion.div
-              key={cat.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-              className="rounded-lg border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6 hover:border-slate-700 transition-all duration-300 group"
+        {/* Icon grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+          {skills.map((s) => (
+            <motion.button
+              key={s.name}
+              role="button"
+              aria-label={s.name}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-900/50 border border-slate-800 hover:bg-slate-900/70 transition-colors"
             >
-              {/* Category header */}
-              <div className="flex items-start gap-3 mb-6">
-                <span className="text-2xl">{cat.icon}</span>
-                <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-widest leading-tight">
-                  {cat.category}
-                </h3>
+              <div className="text-slate-100 flex items-center justify-center w-12 h-12 rounded-md bg-slate-800/60">
+                <div className="text-current">{s.icon}</div>
               </div>
-
-              {/* Skills list */}
-              <div className="space-y-4">
-                {cat.skills.map((skill, skillIdx) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: catIdx * 0.1 + skillIdx * 0.05,
-                    }}
-                    className="space-y-1.5"
-                  >
-                    {/* Skill name and level */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
-                        {skill.name}
-                      </span>
-                      <span className="text-xs text-slate-500 font-medium">
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    {/* Progress bar */}
-                    <div className="h-1.5 w-full bg-slate-800/50 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{
-                          duration: 1,
-                          delay: catIdx * 0.1 + skillIdx * 0.05,
-                          ease: "easeOut",
-                        }}
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-400 opacity-80"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              <span className="text-xs text-slate-300 font-medium">
+                {s.name}
+              </span>
+            </motion.button>
           ))}
         </div>
 
-        {/* Summary stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 rounded-lg border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-6"
-        >
-          <div className="flex items-center justify-between flex-wrap gap-4">
+        <p className="mt-6 text-sm text-slate-400 max-w-xl">
+          Icons represent tools and technologies used across projects. If you
+          prefer a different visualization (experience years, proficiency dots,
+          or category groups), tell me which and I can update.
+        </p>
+
+        {/* simple summary (optional) */}
+        <div className="mt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="inline-flex items-center gap-4 text-sm text-slate-400"
+          >
             <div>
-              <p className="text-sm text-slate-500 mb-1">Total Skills</p>
-              <p className="text-3xl font-bold text-slate-100">
-                {skillCategories.reduce((acc, c) => acc + c.skills.length, 0)}
-              </p>
+              Total skills:
+              <span className="text-slate-100 font-medium ml-2">
+                {totalSkills}
+              </span>
             </div>
-            <div className="hidden sm:block w-px h-12 bg-slate-800" />
-            <div>
-              <p className="text-sm text-slate-500 mb-1">Categories</p>
-              <p className="text-3xl font-bold text-slate-100">
-                {skillCategories.length}
-              </p>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-slate-800" />
-            <div>
-              <p className="text-sm text-slate-500 mb-1">Expertise</p>
-              <p className="text-3xl font-bold text-slate-100">
-                {Math.round(
-                  skillCategories.reduce(
-                    (acc, c) =>
-                      acc + c.skills.reduce((s, sk) => s + sk.level, 0),
-                    0,
-                  ) /
-                    skillCategories.reduce(
-                      (acc, c) => acc + c.skills.length,
-                      0,
-                    ),
-                )}
-                %
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
 //                   {/* Blinking cursor */}
 //                   <div className="flex items-center gap-1.5 pt-1">
 //                     <span className="text-green-400 text-xs">$</span>

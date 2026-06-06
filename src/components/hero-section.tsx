@@ -59,7 +59,7 @@ export function HeroSection() {
 
   const handleDownloadCV = () => {
     // Open CV di tab baru
-    window.open("/Faraj Hafidh_Resume.pdf", "_blank");
+    window.open("/Faraj Hafidh_Resume_v2.pdf", "_blank");
 
     // Jika ingin auto-download, uncomment bawah ini:
     // const link = document.createElement("a");

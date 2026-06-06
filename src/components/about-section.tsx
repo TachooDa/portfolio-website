@@ -193,7 +193,7 @@ export function AboutSection() {
                 Data Analysis
               </h4>
               <div className="space-y-2">
-                {["Python", "SQL", "R", "Statistics"].map((skill) => (
+                {["Python", "SQL", "Statistics"].map((skill) => (
                   <div key={skill} className="text-slate-400 text-sm">
                     • {skill}
                   </div>
@@ -219,13 +219,11 @@ export function AboutSection() {
                 Tools & Platforms
               </h4>
               <div className="space-y-2">
-                {["Excel", "Google Analytics", "Git", "Jupyter"].map(
-                  (skill) => (
-                    <div key={skill} className="text-slate-400 text-sm">
-                      • {skill}
-                    </div>
-                  ),
-                )}
+                {["Excel", "Git"].map((skill) => (
+                  <div key={skill} className="text-slate-400 text-sm">
+                    • {skill}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

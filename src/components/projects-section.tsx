@@ -5,63 +5,73 @@ import { motion } from "framer-motion";
 const projects = [
   {
     id: 1,
+    title: "Retail Transaction Behavior Analysis",
+    description:
+      "A data analyst project investigating the root cause of a sharp revenue decline in early 2024 using retail transaction data spanning May 2023 – April 2024.",
+    tags: ["Microsoft Excel", "SQL/PostgreSQL", "Power BI"],
+    link: "https://github.com/TachooDa/Retail-Transaction-Behavior-Analysis",
+    image: "/rt.png",
+    index: "01",
+  },
+  {
+    id: 2,
     title: "FNP (Ferns & Petals) Sales & Revenue Analysis",
     description:
       "An analysis of 1,000 orders and $3.5 million in revenue across 7 product categories revealed seasonal revenue dominance with 80% concentration in peak months.",
     tags: ["Microsoft Excel", "Power Query", "Power Pivot"],
     link: "https://github.com/TachooDa/fnp_analysis",
     image: "/fnp.png",
-    index: "01",
+    index: "02",
   },
   {
-    id: 2,
+    id: 3,
     title: "Customer Segmentation & Retention Analysis",
     description:
       "Actionable business insights combining Cohort Retention Analysis and RFM Customer Segmentation to understand when customers churn and which are worth retaining.",
     tags: ["PostgreSQL", "Microsoft Excel", "Power BI"],
     link: "https://github.com/TachooDa/Customer-Segmentation-Analysis",
     image: "/sql_1.png",
-    index: "02",
+    index: "03",
   },
   {
-    id: 3,
+    id: 4,
     title: "Walmart Branch Sales Performance Analysis",
     description:
       "Analysis of Walmart's 2019–2023 performance showing falling sales and AOV, strong Q4 seasonality, and heavy revenue concentration in key categories and DFW region.",
     tags: ["Python", "SQL", "Tableau"],
     link: "https://github.com/TachooDa/walmart-sales-performance-analysis",
     image: "/wm_3.jpeg",
-    index: "03",
+    index: "04",
   },
   {
-    id: 4,
+    id: 5,
     title: "Patient Visit Analysis (Analyst Builder Project)",
     description:
       "Explores patient visits, diagnosis trends, and visit utilization using a healthcare dataset to identify patterns in diagnoses and healthcare usage.",
     tags: ["MySQL", "Power BI", "Excel"],
     link: "https://github.com/TachooDa/patien-visits-analysis",
     image: "/sql_2_p.png",
-    index: "04",
+    index: "05",
   },
   {
-    id: 5,
+    id: 6,
     title: "Uber Ride Hailing Analysis",
     description:
       "Deep dive into Uber ride-hailing data to uncover demand patterns, peak hours, geographic trends, and pricing behavior across 2024 dataset.",
     tags: ["Python", "PostgreSQL", "Power BI"],
     link: "https://github.com/TachooDa/Uber-Ride-Data-Analytics-Dataset-2024",
     image: "/ubert_viz.png",
-    index: "05",
+    index: "06",
   },
   {
-    id: 6,
+    id: 7,
     title: "Warehouse & Retail Sales Analysis",
     description:
       "Exploratory analysis of retail and beverage warehouse sales from 2017–2020, answering six key business questions through SQL-driven data cleaning and analysis.",
     tags: ["PostgreSQL", "Power BI", "Microsoft Excel"],
     link: "https://github.com/TachooDa/warehouse_retail_sales_analytics",
     image: "/warehouse.png",
-    index: "06",
+    index: "07",
   },
 ];
 
@@ -127,6 +137,7 @@ export function ProjectsSection() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Open ${project.title} on GitHub`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
@@ -224,6 +235,7 @@ export function ProjectsSection() {
             href="https://github.com/TachooDa"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View all projects on GitHub"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-800 bg-slate-900/50 hover:bg-slate-800/50 hover:border-slate-700 text-slate-300 hover:text-slate-100 transition-all duration-300 group"
           >
             <span>View All Projects</span>

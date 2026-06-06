@@ -19,14 +19,20 @@ export function ContactSection() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", formState);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormState({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    const res = await fetch("https://formspree.io/f/mlgkglaz", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formState),
+    });
+    if (res.ok) {
+      setSubmitted(true);
+      setTimeout(() => {
+        setFormState({ name: "", email: "", message: "" });
+        setSubmitted(false);
+      }, 3000);
+    }
   };
 
   const contacts = [
